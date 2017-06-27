@@ -8,23 +8,27 @@ module Repositories
             @db = Nuummite.new("../storage", "todo.db")
         end
 
-        def add(task : Entities::Task)
+        def store(task : Entities::Task)
             @db[task.id] = task.to_json()
         end
 
-        def edit(task : Entities::Task)
+        def update(task : Entities::Task)
             @db[task.id] = task.to_json()
         end
 
         def find(id : String)
-            @db[id]
+            Entities::Task.from_json(@db[id])
+        end
+
+        def delete(id : String)
+            @db.delete(id)
         end
 
         def all()
-            items = [] of Hash(String, String)
+            items = [] of Entities::Task
 
             @db.each do |key, value|
-                puts JSON.parse(value)
+                items << Entities::Task.from_json(value)
             end
 
             items
