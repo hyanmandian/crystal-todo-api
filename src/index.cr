@@ -17,30 +17,20 @@ module Routes
     todo = Repositories::Todo.new()
 
     description = req.params.json["description"].as(String)
-    task = Entities::Task.new(description, false)
+    task = Entities::Task.new(description)
 
     todo.store(task)
     todo.find(task.id).to_json
   end
 
   put "/tasks/:task" do |req|
+    data = req.params.json;
+
     todo = Repositories::Todo.new()
+
     task = todo.find(req.params.url["task"])
-
-    puts req.params.json
-
-    description = req.params.json["description"].as(String)
-
-    if description
-      task.description = description
-    end
-
-    done = req.params.json["done"].as(Bool)
-
-    if done 
-      task.done = done
-    end
-
+    task.description = data["description"].as(String) if data.has_key? "description"
+    task.done = data["done"].as(Bool) if data.has_key? "done"
     todo.update(task)
 
     "OK!"
