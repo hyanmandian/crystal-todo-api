@@ -29,6 +29,7 @@ module Routes
     todo = Repositories::Todo.new()
 
     task = todo.find(req.params.url["task"])
+
     task.description = data["description"].as(String) if data.has_key? "description"
     task.done = data["done"].as(Bool) if data.has_key? "done"
     todo.update(task)

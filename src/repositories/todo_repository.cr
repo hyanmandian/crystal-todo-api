@@ -4,8 +4,8 @@ require "../entities/*"
 
 module Repositories
     class Todo
-        def initialize
-            @db = Nuummite.new("../storage", "todo.db")
+        def initialize(database : String = "todo.db")
+            @db = Nuummite.new("../storage", database)
         end
 
         def store(task : Entities::Task)
@@ -17,7 +17,7 @@ module Repositories
         end
 
         def find(id : String)
-            Entities::Task.from_json(@db[id])
+            @db[id]? ? Entities::Task.from_json(@db[id]) : nil
         end
 
         def delete(id : String)
@@ -32,6 +32,10 @@ module Repositories
             end
 
             items
+        end
+
+        def clear()
+            @db.shutdown()
         end
     end
 end
