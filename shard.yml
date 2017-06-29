@@ -1,4 +1,4 @@
-name: todo
+name: crystal-todo-api
 version: 0.1.0
 
 authors:
@@ -15,8 +15,8 @@ dependencies:
     github: raydf/crystal-uuid
 
 targets:
-  todo:
-    main: src/todo.cr
+  heroku:
+    main: src/index.cr
 
 crystal: 0.22.0
 
