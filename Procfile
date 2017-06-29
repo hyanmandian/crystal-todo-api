@@ -1,1 +1,0 @@
-web: crystal build src/index.cr -o ./app --release
