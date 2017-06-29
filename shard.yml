@@ -2,7 +2,7 @@ name: crystal-todo-api
 version: 0.1.0
 
 authors:
-  - Hyan Mandian <hyan.mandian@ilegra.com>
+  - Hyan Mandian <hyanmandian@hotmail.com>
 
 dependencies:
   kemal:
