@@ -30,6 +30,10 @@ module Routes
 
     task = todo.find(req.params.url["task"])
 
+    if task.nil?
+      next "404!"
+    end
+
     task.description = data["description"].as(String) if data.has_key? "description"
     task.done = data["done"].as(Bool) if data.has_key? "done"
     todo.update(task)
@@ -44,6 +48,6 @@ module Routes
     "OK!"
   end
   
-  Kemal.config.port = 1337
+  Kemal.config.port = ENV["PORT"] || 1337
   Kemal.run
 end
