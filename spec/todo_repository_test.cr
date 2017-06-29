@@ -13,7 +13,6 @@ describe "TodoRepositoryTest" do
         task = Entities::Task.new("test")
         todo.store(task)
         task_found = todo.find(task.id)
-
         task_found.to_json().should(eq(task.to_json()))
       end
     end
@@ -33,7 +32,6 @@ describe "TodoRepositoryTest" do
         task_found.description = "tset"
         todo.update(task_found)
         task_updated = todo.find(task_found.id)
-
         task_updated.to_json().should(eq(task_found.to_json()))
       end
     end
@@ -69,7 +67,6 @@ describe "TodoRepositoryTest" do
         task = Entities::Task.new("test")
         todo.store(task)
         tasks = todo.all()
-
         tasks.should(be_a(Array(Entities::Task)))
       end
     end
