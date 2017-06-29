@@ -15,7 +15,7 @@ dependencies:
     github: raydf/crystal-uuid
 
 targets:
-  todo:
+  index:
     main: src/index.cr
 
 crystal: 0.22.0
