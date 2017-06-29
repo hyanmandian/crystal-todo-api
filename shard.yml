@@ -16,7 +16,7 @@ dependencies:
 
 targets:
   todo:
-    main: src/index.cr
+    main: src/todo.cr
 
 crystal: 0.22.0
 
