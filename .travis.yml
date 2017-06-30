@@ -1,8 +1,5 @@
 language: crystal
 
-crystal:
-  - nightly
-
 script:
   - crystal spec spec/*
 
