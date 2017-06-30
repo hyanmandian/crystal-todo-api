@@ -1,11 +1,10 @@
-dist: trusty
-
-sudo: required
-
 language: crystal
 
 crystal:
   - latest
+
+script:
+  - crystal spec spec/*
 
 notifications:
   email: false
