@@ -48,6 +48,6 @@ module Routes
     "OK!"
   end
   
-  Kemal.config.port = ENV["PORT"] || 1337
+  Kemal.config.port = ENV["PORT"].to_i32() || 1337
   Kemal.run
 end
