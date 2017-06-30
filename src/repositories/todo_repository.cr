@@ -5,7 +5,7 @@ require "../entities/*"
 module Repositories
     class Todo
         def initialize(database : String = "todo.db")
-            @db = Nuummite.new("../storage", database)
+            @db = Nuummite.new("./storage", database)
         end
 
         def store(task : Entities::Task)
