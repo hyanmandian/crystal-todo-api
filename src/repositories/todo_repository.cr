@@ -6,14 +6,15 @@ module Repositories
     class Todo
         def initialize(database : String = "todo.db")
             @db = Nuummite.new("./storage", database)
+            @db[""] = ""
         end
 
         def store(task : Entities::Task)
             @db[task.id] = task.to_json()
         end
 
-        def update(task : Entities::Task)
-            @db[task.id] = task.to_json()
+        def update(id : String, task : Entities::Task)
+            @db[id] = task.to_json()
         end
 
         def find(id : String)
@@ -28,7 +29,9 @@ module Repositories
             items = [] of Entities::Task
 
             @db.each do |key, value|
-                items << Entities::Task.from_json(value)
+                if !value.empty?
+                    items << Entities::Task.from_json(value)
+                end
             end
 
             items

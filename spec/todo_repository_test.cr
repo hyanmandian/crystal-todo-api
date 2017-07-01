@@ -30,7 +30,7 @@ describe "TodoRepositoryTest" do
         end
       
         task_found.description = "tset"
-        todo.update(task_found)
+        todo.update(task_found.id, task_found)
         task_updated = todo.find(task_found.id)
         task_updated.to_json().should(eq(task_found.to_json()))
       end
